@@ -1,9 +1,7 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using UxForms.Workflow.Interfaces;
+using UxForms.Domain;
 
 namespace UxForms.WebApi.Controllers.Api
 {
@@ -11,10 +9,17 @@ namespace UxForms.WebApi.Controllers.Api
     [Route("api/Forms")]
     public class FormsController : Controller
     {
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private readonly IFormWorkflow workflow;
+
+        public FormsController(IFormWorkflow workflow)
         {
-            return new string[] { "value1", "value2" };
+            this.workflow = workflow;
         }
+
+        [HttpGet]
+        public IEnumerable<Form> Get() => workflow.Get();
+
+        [HttpPost]
+        public Form Post([FromBody]Form form) => workflow.Post(form);
     }
 }

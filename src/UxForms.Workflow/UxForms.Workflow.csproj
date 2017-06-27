@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\UxForms.Domain\UxForms.Domain.csproj" />
+    <ProjectReference Include="..\UxForms.Repository\UxForms.Repository.csproj" />
+  </ItemGroup>
+
+</Project>
